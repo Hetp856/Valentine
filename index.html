@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>7 Days, Just for You</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      color: #333;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.95);
+      width: 92%;
+      max-width: 420px;
+      border-radius: 20px;
+      padding: 28px 24px 32px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      text-align: center;
+      animation: fadeIn 1s ease;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.1rem;
+      margin: 0 0 10px;
+    }
+
+    .subtitle {
+      font-size: 0.95rem;
+      color: #666;
+      margin-bottom: 22px;
+    }
+
+    .days {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .day-btn {
+      display: block;
+      padding: 14px 16px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.25s ease;
+      background: #f5f5f5;
+      color: #999;
+      cursor: not-allowed;
+    }
+
+    .day-btn span {
+      font-size: 0.85rem;
+      opacity: 0.8;
+    }
+
+    .day-btn.active {
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      color: #fff;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(255, 120, 160, 0.45);
+    }
+
+    .day-btn.active:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 22px rgba(255, 120, 160, 0.55);
+    }
+
+    .footer-note {
+      margin-top: 22px;
+      font-size: 0.8rem;
+      color: #777;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>7 Days, Just for You</h1>
+    <p class="subtitle">
+      One small surprise each day. Take it slow — today’s is ready 🌹
+    </p>
+
+    <div class="days">
+      <!-- Day 1: OPEN -->
+      <a href="rose.html" class="day-btn active">
+        🌹 Rose Day<br><span>Tap to open</span>
+      </a>
+
+      <!-- Locked Days -->
+      <div class="day-btn">💌 Propose Day<br><span>Unlocks tomorrow</span></div>
+      <div class="day-btn">🍫 Chocolate Day<br><span>Coming soon</span></div>
+      <div class="day-btn">🧸 Teddy Day<br><span>Coming soon</span></div>
+      <div class="day-btn">🤝 Promise Day<br><span>Coming soon</span></div>
+      <div class="day-btn">🤗 Hug Day<br><span>Coming soon</span></div>
+      <div class="day-btn">❤️ Valentine’s Day<br><span>Final surprise</span></div>
+    </div>
+
+    <div class="footer-note">
+      Made with care, one day at a time.
+    </div>
+  </div>
+</body>
+</html>
