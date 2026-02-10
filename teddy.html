@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teddy Day 🧸</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at top, #ffccd5, #f8a1b1, #f48fb1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      color: #5a1a2c;
+      overflow-x: hidden;
+    }
+
+    /* Floating teddy & hearts */
+    .hearts {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .heart-float {
+      position: absolute;
+      bottom: -40px;
+      font-size: 20px;
+      animation: floatUp 14s linear infinite;
+      opacity: 0.6;
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(0) scale(1); opacity: 0; }
+      15% { opacity: 0.6; }
+      to { transform: translateY(-115vh) scale(1.4); opacity: 0; }
+    }
+
+    .container {
+      width: 100%;
+      max-width: 520px;
+      background: rgba(255, 245, 248, 0.98);
+      border-radius: 28px;
+      padding: 36px 28px 40px;
+      box-shadow: 0 30px 65px rgba(0,0,0,0.25);
+      animation: fadeUp 1.2s ease;
+      position: relative;
+      z-index: 2;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem;
+      margin: 0;
+      color: #ad1457;
+    }
+
+    .header p {
+      margin-top: 6px;
+      font-size: 1rem;
+      color: #c2185b;
+    }
+
+    .message-box {
+      background: linear-gradient(135deg, #ffe4ec, #ffd1dc);
+      border-radius: 22px;
+      padding: 24px 22px 26px;
+      margin-bottom: 28px;
+      box-shadow: inset 0 0 0 1px rgba(173,20,87,0.25);
+      animation: glow 3.5s ease-in-out infinite;
+    }
+
+    @keyframes glow {
+      0%, 100% { box-shadow: inset 0 0 0 1px rgba(173,20,87,0.25); }
+      50% { box-shadow: inset 0 0 0 1px rgba(173,20,87,0.65); }
+    }
+
+    .message-box p {
+      margin: 0 0 14px;
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+
+    .message-box p:last-child { margin-bottom: 0; }
+
+    /* Heart slideshow */
+    .heart-slideshow {
+      position: relative;
+      width: 100%;
+      max-width: 320px;
+      margin: 0 auto 28px;
+      aspect-ratio: 1 / 1;
+      filter: drop-shadow(0 18px 30px rgba(0,0,0,0.35));
+    }
+
+    .heart-frame {
+      position: absolute;
+      inset: 0;
+      border-radius: 20px;
+      overflow: hidden;
+      clip-path: path('M160 290 C160 290 20 190 20 110 C20 50 70 20 110 20 C140 20 160 40 160 40 C160 40 180 20 210 20 C250 20 300 50 300 110 C300 190 160 290 160 290 Z');
+      animation: heartPulse 3s ease-in-out infinite;
+      background: #ffe6ee;
+    }
+
+    @keyframes heartPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.04); }
+    }
+
+    .heart-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      animation: showSlide 52s infinite;
+    }
+
+    .heart-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transform: scale(1.05);
+    }
+
+    /* 13 slides */
+    .heart-slide:nth-child(1)  { animation-delay: 0s; }
+    .heart-slide:nth-child(2)  { animation-delay: 4s; }
+    .heart-slide:nth-child(3)  { animation-delay: 8s; }
+    .heart-slide:nth-child(4)  { animation-delay: 12s; }
+    .heart-slide:nth-child(5)  { animation-delay: 16s; }
+    .heart-slide:nth-child(6)  { animation-delay: 20s; }
+    .heart-slide:nth-child(7)  { animation-delay: 24s; }
+    .heart-slide:nth-child(8)  { animation-delay: 28s; }
+    .heart-slide:nth-child(9)  { animation-delay: 32s; }
+    .heart-slide:nth-child(10) { animation-delay: 36s; }
+    .heart-slide:nth-child(11) { animation-delay: 40s; }
+    .heart-slide:nth-child(12) { animation-delay: 44s; }
+    .heart-slide:nth-child(13) { animation-delay: 48s; }
+
+    @keyframes showSlide {
+      0%   { opacity: 0; transform: scale(0.96); }
+      6%   { opacity: 1; transform: scale(1); }
+      14%  { opacity: 1; }
+      20%  { opacity: 0; transform: scale(1.04); }
+      100% { opacity: 0; }
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #ad1457;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="hearts">
+    <div class="heart-float" style="left:10%; animation-delay:0s;">🧸</div>
+    <div class="heart-float" style="left:26%; animation-delay:3s;">❤️</div>
+    <div class="heart-float" style="left:42%; animation-delay:6s;">🧸</div>
+    <div class="heart-float" style="left:60%; animation-delay:2s;">💗</div>
+    <div class="heart-float" style="left:78%; animation-delay:5s;">🧸</div>
+    <div class="heart-float" style="left:90%; animation-delay:1s;">❤️</div>
+  </div>
+
+  <div class="container">
+    <div class="header">
+      <h1>Teddy Day 🧸</h1>
+      <p>Day 4: Comfort, warmth, and you</p>
+    </div>
+
+    <div class="message-box">
+      <p>
+        They say a teddy is for comfort — something you hold when you need warmth, safety, or just a little peace. And somehow, you do that without even realizing it.
+      </p>
+      <p>
+        In moments when everything feels heavy or loud, you’re the calm. If I could give you a teddy today, it would carry all the comfort you’ve ever given me.
+      </p>
+    </div>
+
+    <div class="heart-slideshow">
+      <div class="heart-frame">
+        <div class="heart-slide"><img src="ted-1.jpg" alt="Memory 1"></div>
+        <div class="heart-slide"><img src="ted-2.jpg" alt="Memory 2"></div>
+        <div class="heart-slide"><img src="ted-3.jpg" alt="Memory 3"></div>
+        <div class="heart-slide"><img src="ted-4.jpg" alt="Memory 4"></div>
+        <div class="heart-slide"><img src="ted-5.jpg" alt="Memory 5"></div>
+        <div class="heart-slide"><img src="ted-6.jpg" alt="Memory 6"></div>
+        <div class="heart-slide"><img src="ted-7.jpg" alt="Memory 7"></div>
+        <div class="heart-slide"><img src="ted-8.jpg" alt="Memory 8"></div>
+        <div class="heart-slide"><img src="ted-9.jpg" alt="Memory 9"></div>
+        <div class="heart-slide"><img src="ted-10.jpg" alt="Memory 10"></div>
+        <div class="heart-slide"><img src="ted-11.jpg" alt="Memory 11"></div>
+        <div class="heart-slide"><img src="ted-12.jpg" alt="Memory 12"></div>
+        <div class="heart-slide"><img src="ted-13.jpg" alt="Memory 13"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+      Soft hugs, warm hearts, and you 🧸💗
+    </div>
+  </div>
+</body>
+</html>
