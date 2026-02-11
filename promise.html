@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Promise Day 💍</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at top, #d1c4e9, #b39ddb, #9575cd);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      color: #2e1a47;
+      overflow-x: hidden;
+    }
+
+    /* Floating promise sparkles */
+    .hearts {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .heart-float {
+      position: absolute;
+      bottom: -40px;
+      font-size: 18px;
+      animation: floatUp 14s linear infinite;
+      opacity: 0.6;
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(0) scale(1); opacity: 0; }
+      15% { opacity: 0.6; }
+      to { transform: translateY(-115vh) scale(1.4); opacity: 0; }
+    }
+
+    .container {
+      width: 100%;
+      max-width: 520px;
+      background: rgba(245, 240, 255, 0.98);
+      border-radius: 28px;
+      padding: 36px 28px 40px;
+      box-shadow: 0 30px 65px rgba(0,0,0,0.25);
+      animation: fadeUp 1.2s ease;
+      position: relative;
+      z-index: 2;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem;
+      margin: 0;
+      color: #5e35b1;
+    }
+
+    .header p {
+      margin-top: 6px;
+      font-size: 1rem;
+      color: #7e57c2;
+    }
+
+    .message-box {
+      background: linear-gradient(135deg, #ede7f6, #d1c4e9);
+      border-radius: 22px;
+      padding: 24px 22px 26px;
+      margin-bottom: 28px;
+      box-shadow: inset 0 0 0 1px rgba(94,53,177,0.25);
+      animation: glow 3.5s ease-in-out infinite;
+    }
+
+    @keyframes glow {
+      0%, 100% { box-shadow: inset 0 0 0 1px rgba(94,53,177,0.25); }
+      50% { box-shadow: inset 0 0 0 1px rgba(94,53,177,0.65); }
+    }
+
+    .message-box p {
+      margin: 0 0 14px;
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+
+    .message-box p:last-child { margin-bottom: 0; }
+
+    /* Heart slideshow */
+    .heart-slideshow {
+      position: relative;
+      width: 100%;
+      max-width: 320px;
+      margin: 0 auto 28px;
+      aspect-ratio: 1 / 1;
+      filter: drop-shadow(0 18px 30px rgba(0,0,0,0.35));
+    }
+
+    .heart-frame {
+      position: absolute;
+      inset: 0;
+      border-radius: 20px;
+      overflow: hidden;
+      clip-path: path('M160 290 C160 290 20 190 20 110 C20 50 70 20 110 20 C140 20 160 40 160 40 C160 40 180 20 210 20 C250 20 300 50 300 110 C300 190 160 290 160 290 Z');
+      animation: heartPulse 3s ease-in-out infinite;
+      background: #f3e5f5;
+    }
+
+    @keyframes heartPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.04); }
+    }
+
+    .heart-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      animation: showSlide 52s infinite;
+    }
+
+    .heart-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transform: scale(1.05);
+    }
+
+    /* 13 slides */
+    .heart-slide:nth-child(1)  { animation-delay: 0s; }
+    .heart-slide:nth-child(2)  { animation-delay: 4s; }
+    .heart-slide:nth-child(3)  { animation-delay: 8s; }
+    .heart-slide:nth-child(4)  { animation-delay: 12s; }
+    .heart-slide:nth-child(5)  { animation-delay: 16s; }
+    .heart-slide:nth-child(6)  { animation-delay: 20s; }
+    .heart-slide:nth-child(7)  { animation-delay: 24s; }
+    .heart-slide:nth-child(8)  { animation-delay: 28s; }
+    .heart-slide:nth-child(9)  { animation-delay: 32s; }
+    .heart-slide:nth-child(10) { animation-delay: 36s; }
+    .heart-slide:nth-child(11) { animation-delay: 40s; }
+    .heart-slide:nth-child(12) { animation-delay: 44s; }
+    .heart-slide:nth-child(13) { animation-delay: 48s; }
+
+    @keyframes showSlide {
+      0%   { opacity: 0; transform: scale(0.96); }
+      6%   { opacity: 1; transform: scale(1); }
+      14%  { opacity: 1; }
+      20%  { opacity: 0; transform: scale(1.04); }
+      100% { opacity: 0; }
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #5e35b1;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="hearts">
+    <div class="heart-float" style="left:12%; animation-delay:0s;">💜</div>
+    <div class="heart-float" style="left:28%; animation-delay:3s;">✨</div>
+    <div class="heart-float" style="left:44%; animation-delay:6s;">💜</div>
+    <div class="heart-float" style="left:62%; animation-delay:2s;">💖</div>
+    <div class="heart-float" style="left:78%; animation-delay:5s;">✨</div>
+    <div class="heart-float" style="left:90%; animation-delay:1s;">💜</div>
+  </div>
+
+  <div class="container">
+    <div class="header">
+      <h1>Promise Day 💍</h1>
+      <p>Day 5: Words that truly mean something</p>
+    </div>
+
+    <div class="message-box">
+      <p>
+        Today isn’t about big speeches. It’s about the quiet promises that stay even when no one is watching.
+      </p>
+      <p>
+        I promise to respect you, to support you in your dreams, to stand beside you in good days and difficult ones, and to always value what we share.
+      </p>
+      <p>
+        No matter where life takes us, I promise that what I feel is real, honest, and always comes from the heart.
+      </p>
+    </div>
+
+    <div class="heart-slideshow">
+      <div class="heart-frame">
+        <div class="heart-slide"><img src="prom-1.jpg" alt="Memory 1"></div>
+        <div class="heart-slide"><img src="prom-2.jpg" alt="Memory 2"></div>
+        <div class="heart-slide"><img src="prom-3.jpg" alt="Memory 3"></div>
+        <div class="heart-slide"><img src="prom-4.jpg" alt="Memory 4"></div>
+        <div class="heart-slide"><img src="prom-5.jpg" alt="Memory 5"></div>
+        <div class="heart-slide"><img src="prom-6.jpg" alt="Memory 6"></div>
+        <div class="heart-slide"><img src="prom-7.jpg" alt="Memory 7"></div>
+        <div class="heart-slide"><img src="prom-8.jpg" alt="Memory 8"></div>
+        <div class="heart-slide"><img src="prom-9.jpg" alt="Memory 9"></div>
+        <div class="heart-slide"><img src="prom-10.jpg" alt="Memory 10"></div>
+        <div class="heart-slide"><img src="prom-11.jpg" alt="Memory 11"></div>
+        <div class="heart-slide"><img src="prom-12.jpg" alt="Memory 12"></div>
+        <div class="heart-slide"><img src="prom-13.jpg" alt="Memory 13"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+      A promise made with honesty and heart 💜
+    </div>
+  </div>
+</body>
+</html>
